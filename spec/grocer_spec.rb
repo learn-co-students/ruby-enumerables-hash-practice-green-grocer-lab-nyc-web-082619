@@ -1,3 +1,4 @@
+require 'pry'
 describe "Grocer" do
   let(:items) do
     [
@@ -70,6 +71,7 @@ describe "Grocer" do
       end
 
       it "removes the number of discounted items from the original item's count" do
+        
         expect(@avocado_result["AVOCADO"][:price]).to eq(3.00)
         expect(@avocado_result["AVOCADO"][:count]).to eq(0)
       end
@@ -102,6 +104,7 @@ describe "Grocer" do
         consolidated_cart = consolidate_cart(cart)
 
         irrelevant = apply_coupons(consolidated_cart, [find_coupon("AVOCADO")])
+      
         expect(irrelevant["CHEESE"][:price]).to eq(6.50)
         expect(irrelevant["CHEESE"][:count]).to eq(2)
         expect(irrelevant.keys).to_not include("AVOCADO W/COUPON")
