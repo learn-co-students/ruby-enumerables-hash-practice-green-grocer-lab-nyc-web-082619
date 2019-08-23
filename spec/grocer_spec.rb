@@ -102,6 +102,7 @@ describe "Grocer" do
         consolidated_cart = consolidate_cart(cart)
 
         irrelevant = apply_coupons(consolidated_cart, [find_coupon("AVOCADO")])
+        #binding.pry
         expect(irrelevant["CHEESE"][:price]).to eq(6.50)
         expect(irrelevant["CHEESE"][:count]).to eq(2)
         expect(irrelevant.keys).to_not include("AVOCADO W/COUPON")
